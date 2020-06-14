@@ -1,11 +1,7 @@
 # ExtendedSample
 
 GETTING STARTED:
-Follow below instructions for a proper use of this custom control in Xamarin Forms
-
--	Create a Xamarin Forms solution.
--	Include UWP and Android projects
--	For netstandard shared project update Xamarin.Forms to the latest version
+Follow below instructions for a proper use of this solution.
 
 For netstandard project search for ExtendedControls.ExtCollectionView.XForms.1.0.0.nupkg in Visual Studio Nuget Manager and install it.
 For Android project search for ExtendedControls.ExtCollectionView.XForms.Android.1.0.0.nupkg package in Visual Studio Nuget Manager and install it.
