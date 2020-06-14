@@ -4,6 +4,10 @@ GETTING STARTED:
 
 Follow below instructions for a proper use of this solution.
 
+This project uses my ExtendedCollectionView custom control. 
+
+In order to make if work you have to get the proper Nuget packeges. 
+
 For netstandard project search for ExtendedControls.ExtCollectionView.XForms.1.0.0.nupkg in Visual Studio Nuget Manager and install it.
 
 For Android project search for ExtendedControls.ExtCollectionView.XForms.Android.1.0.0.nupkg package in Visual Studio Nuget Manager and install it.
