@@ -1,10 +1,13 @@
 # ExtendedSample
 
 GETTING STARTED:
+
 Follow below instructions for a proper use of this solution.
 
 For netstandard project search for ExtendedControls.ExtCollectionView.XForms.1.0.0.nupkg in Visual Studio Nuget Manager and install it.
+
 For Android project search for ExtendedControls.ExtCollectionView.XForms.Android.1.0.0.nupkg package in Visual Studio Nuget Manager and install it.
+
 For Android project search for ExtendedControls.ExtCollectionView.XForms.UWP.1.0.0.nupkg package in Visual Studio Nuget Manager and install it.
 
 Now you should be ready to work with ExtendedCollectionView.
@@ -41,16 +44,20 @@ You can decide how many items per row just by using  SpanCount property
 
 You can also decide how much space between items just by using  ItemsSpacing property
 
-To get selectedItem(s) you can bind your property to CurrentItem property. It will return the selecteditem in CollectionView.
+To get selectedItem(s) you can bind your property to CurrentItem property.
+It will return the selecteditem in CollectionView.
 Selection infos are also reported in SelectionChanging and SelectionChanged events.
 
 With SelectedItemsChangingEventArgs you can:
+
 -	Get previous selected item (PreviousElement)
 -	Get current Selected Item (CurrentElement)
 -	Cancel selection
+
 If Cancel is set to true, selection is aborted. Clicked item will be NOT selected.
 
 With SelectedItemsChanged you can:
+
 -	Get previous selected item (PreviousElement)
 -	Get current Selected Item (CurrentElement)
 -	Get a list of selected Items (only in Multiple Selection Mode, otherwise there’ll be only one item)
@@ -67,6 +74,7 @@ When drag and drop operation is intentionally aborted, hovered item will be colo
 In order to abort drag and drop operation you can exploit ItemIntersecting event.
 
 IntersectionEventArgs returns:
+
 IntersectingColumn: is the column where the hovered item resides (Horizontal Layout Mode)
 IntersectingRow: is the row where the hovered item resides (Vertical Layout Mode)
 IntersectingWith: is the item that has been hovered while dragging
@@ -75,14 +83,18 @@ TranslationY: dragged item translation distance over Y axis (Vertical Layout Mod
 Cancel: if set to True, drag over intersecting item is aborted (dragged item is set back to it’s starting position when drag is released)
 
 ItemDragStarted  event is fired when drag operation is started.
+
 DragStartedEventArgs returns:
+
 StartColumn: is the column where drag operation starts (Horizontal Layout Mode)
 StartRow: is the row where drag operation starts (Vertical Layout Mode)
 X: item drag start postion over X axis (Horizontal Layout Mode)
 Y: item drag start postion over Y axis (Vertical Layout Mode)
 
 ItemDropped event is fired once drag operation is relased.
+
 DropEventArgs returns:
+
 DropColumn: the column where the item is released (Horizontal Layout Mode)
 DropRow: the row where the item is released (Vertical Layout Mode)
 DropPointX: the point in X axis where the item is placed after drag release (Horizontal Layout Mode)
