@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ext="clr-namespace:ExtendedControls.ExtCollectionView.XForms.Control;assembly=ExtendedControls.ExtCollectionView.XForms"
+             xmlns:vm="clr-namespace:ExtendedSample.ViewModel;assembly=ExtendedSample"
+             mc:Ignorable="d"
+             x:Class="ExtendedSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MonkeysViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <!--<Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />-->
+        <ext:ExtendedCollectionView ItemsSource="{Binding Monkeys}" SelectionMode="Single" ItemsSize="180"
+                                    OrientationMode="Horizontal" SpanCount="4" ItemsSpacing="30"
+                                    SelectionChanging="ExtendedCollectionView_OnSelectionChanging"
+                                    SelectionChanged="ExtendedCollectionView_OnSelectionChanged"
+                                    DefaultSelectedItemColor="LightGreen" DragNDropEnabled="True"
+                                    CurrentItem="{Binding CurrentMonkey}" 
+                                    SelectedItem="{Binding SelectedMonkey}"
+                                    ItemDragStarted="ExtendedCollectionView_OnItemDragStarted"
+                                    ItemIntersecting="ExtendedCollectionView_OnItemIntersecting"
+                                    ItemDropped="ExtendedCollectionView_OnItemDropped"
+                                    OnHoverItemColor="Chartreuse" OnHoverCancelColor="Red"
+                                    x:Name="Ecv" HorizontalScrollBarVisibility="Always"
+                                    VerticalScrollBarVisibility="Always">
+
+            <ext:ExtendedCollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Green">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding ., Name}"/>
+                            <Image Source="{Binding ., Image}"/>
+                        </StackLayout>
+
+                        <!--For Vertical OrientationMode-->
+                        <!--<StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding ., Image}"/>
+                            <Label Text="{Binding ., Name}"/>
+                        </StackLayout>-->
+                    </Frame>
+                </DataTemplate>
+            </ext:ExtendedCollectionView.ItemTemplate>
+
+            <ext:ExtendedCollectionView.SelectedItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Red">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding ., Name}"/>
+                            <Image Source="{Binding ., Image}"/>
+                        </StackLayout>
+                        <!--For Vertical OrientationMode-->
+                        <!--<StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding ., Image}"/>
+                            <Label Text="{Binding ., Name}"/>
+                        </StackLayout>-->
+                    </Frame>
+                </DataTemplate>
+            </ext:ExtendedCollectionView.SelectedItemTemplate>
+
+
+        </ext:ExtendedCollectionView>
+    </StackLayout>
+
+</ContentPage>
