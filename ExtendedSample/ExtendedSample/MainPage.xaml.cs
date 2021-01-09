@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExtendedControls.ExtCollectionView.XForms.EventArgs;
+//using ExtendedControls.ExtCollectionView.XForms.EventArgs;
 using Xamarin.Forms;
+using DropEventArgs = ExtendedControls.ExtCollectionView.XForms.EventArgs.DropEventArgs;
 
 namespace ExtendedSample
 {
@@ -18,30 +21,39 @@ namespace ExtendedSample
         {
             InitializeComponent();
         }
-
-        private void ExtendedCollectionView_OnSelectionChanging(object sender, SelectedItemsChangingEventArgs args)
+        private void Ecv_OnItemDragStarted(object sender, DragStartedEventArgs args)
         {
             
         }
 
-        private void ExtendedCollectionView_OnSelectionChanged(object sender, SelectedItemsChangedEventArgs args)
-        {
-            
-        }
-
-        private void ExtendedCollectionView_OnItemDragStarted(object sender, DragStartedEventArgs args)
-        {
-            
-        }
-
-        private void ExtendedCollectionView_OnItemIntersecting(object sender, IntersectionEventArgs args)
-        {
-            
-        }
-
-        private void ExtendedCollectionView_OnItemDropped(object sender, DropEventArgs args)
+        private void Ecv_OnSelectionChanging(object sender, SelectedItemsChangingEventArgs args)
         {
            
+        }
+
+        private void Ecv_OnSelectionChanged(object sender, SelectedItemsChangedEventArgs args)
+        {
+            
+        }
+
+        private void Ecv_OnChildrenReordered(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Ecv_OnItemIntersecting(object sender, IntersectionEventArgs args)
+        {
+            
+        }
+
+        private void Ecv_OnItemDropped(object sender, DropEventArgs args)
+        {
+            
+        }
+
+        private void Ecv_OnItemSourceChanged(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            
         }
     }
 }

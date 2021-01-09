@@ -2,70 +2,127 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ext="clr-namespace:ExtendedControls.ExtCollectionView.XForms.Control;assembly=ExtendedControls.ExtCollectionView.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
              xmlns:vm="clr-namespace:ExtendedSample.ViewModel;assembly=ExtendedSample"
+             xmlns:control="clr-namespace:ExtendedControls.ExtCollectionView.XForms.Control;assembly=ExtendedControls.ExtCollectionView.XForms"
              mc:Ignorable="d"
              x:Class="ExtendedSample.MainPage">
+    
 
     <ContentPage.BindingContext>
         <vm:MonkeysViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <!--<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />-->
-        <ext:ExtendedCollectionView ItemsSource="{Binding Monkeys}" SelectionMode="Single" ItemsSize="180"
-                                    OrientationMode="Horizontal" SpanCount="4" ItemsSpacing="30"
-                                    SelectionChanging="ExtendedCollectionView_OnSelectionChanging"
-                                    SelectionChanged="ExtendedCollectionView_OnSelectionChanged"
-                                    DefaultSelectedItemColor="LightGreen" DragNDropEnabled="True"
-                                    CurrentItem="{Binding CurrentMonkey}" 
-                                    SelectedItem="{Binding SelectedMonkey}"
-                                    ItemDragStarted="ExtendedCollectionView_OnItemDragStarted"
-                                    ItemIntersecting="ExtendedCollectionView_OnItemIntersecting"
-                                    ItemDropped="ExtendedCollectionView_OnItemDropped"
-                                    OnHoverItemColor="Chartreuse" OnHoverCancelColor="Red"
-                                    x:Name="Ecv" HorizontalScrollBarVisibility="Always"
-                                    VerticalScrollBarVisibility="Always">
+    <StackLayout Spacing="10">
 
-            <ext:ExtendedCollectionView.ItemTemplate>
+        <!--ItemsSource="{Binding Monkeys, Mode=TwoWay}"-->
+        <!--ItemsSource="{StaticResource MonkeysList}"-->
+        <control:ExtendedCollectionView ItemsSource="{Binding Monkeys, Mode=TwoWay}"
+                                        SelectionMode="Single" ItemsSize="180" SpanCount="4"
+                                        OrientationMode="Horizontal" ItemsSpacing="30"
+                                        SelectionChanging="Ecv_OnSelectionChanging"
+                                        SelectionChanged="Ecv_OnSelectionChanged"
+                                        DefaultSelectedItemColor="LightGreen" DragNDropEnabled="True"
+                                        SelectedItem="{Binding SelectedMonkey}"
+                                        CurrentItem="{Binding CurrentMonkey}" 
+                                        OnHoverItemColor="Blue" OnHoverCancelColor="Red"
+                                        x:Name="Ecv" HorizontalScrollBarVisibility="Always"
+                                        VerticalScrollBarVisibility="Always" 
+                                        ChildrenReordered="Ecv_OnChildrenReordered"
+                                        SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                                        TapCommand="{Binding TapCommand}"
+                                        DoubleTapCommand="{Binding DoubleTapCommand}"
+                                        EnableGrouping="True" GroupSplitter="Name"
+                                        ItemDragStarted="Ecv_OnItemDragStarted"
+                                        ItemIntersecting="Ecv_OnItemIntersecting"
+                                        ItemDropped="Ecv_OnItemDropped"
+                                        ItemSourceChanged="Ecv_OnItemSourceChanged"
+                                        DraggedItemOpacity="0.2">
+
+            <control:ExtendedCollectionView.GroupHeaderTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Green">
+                    <Frame BorderColor="OrangeRed" CornerRadius="3">
+                        <Label Text="{Binding Key }"
+                               TextColor="Green" FontSize="Medium"  Margin="15" FontAttributes="Bold"/>
+                    </Frame>
+                </DataTemplate>
+            </control:ExtendedCollectionView.GroupHeaderTemplate>
+
+            <control:ExtendedCollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--<control2:ExtendedBorder CornerRadius="3" 
+                                                 BorderColor="Red" 
+                                                 BorderGradientColor="Yellow" 
+                                                 GradientMode="Linear" 
+                                                 AnimateColors="True" 
+                                                 BorderThickness="2">
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding ., Image}"/>
+                            <Label Text="{Binding ., Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </control2:ExtendedBorder>-->
+
+
+                    <Frame BorderColor="Green" >
+                        <!--Margin="15,0,0,0"-->
+
+                        <!--For Horizontal-->
                         <StackLayout Orientation="Vertical">
                             <Label Text="{Binding ., Name}"/>
                             <Image Source="{Binding ., Image}"/>
                         </StackLayout>
 
-                        <!--For Vertical OrientationMode-->
+                        <!--For Vertical-->
                         <!--<StackLayout Orientation="Horizontal">
                             <Image Source="{Binding ., Image}"/>
-                            <Label Text="{Binding ., Name}"/>
+                            <Label Text="{Binding ., Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>-->
                     </Frame>
-                </DataTemplate>
-            </ext:ExtendedCollectionView.ItemTemplate>
 
-            <ext:ExtendedCollectionView.SelectedItemTemplate>
+                </DataTemplate>
+            </control:ExtendedCollectionView.ItemTemplate>
+
+            <control:ExtendedCollectionView.SelectedItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Red">
+                    <!--<control2:ExtendedBorder CornerRadius="3" BorderColor="ForestGreen" 
+                                             BorderGradientColor="Yellow" 
+                                             GradientMode="Linear" 
+                                             AnimateColors="True"  BorderThickness="4">
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding ., Image}"/>
+                            <Label Text="{Binding ., Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </control2:ExtendedBorder>-->
+
+                    <Frame BorderColor="LightGreen">
+
+                        <!--For Horizontal-->
                         <StackLayout Orientation="Vertical">
                             <Label Text="{Binding ., Name}"/>
                             <Image Source="{Binding ., Image}"/>
                         </StackLayout>
-                        <!--For Vertical OrientationMode-->
+
+                        <!--For Vertical-->
                         <!--<StackLayout Orientation="Horizontal">
                             <Image Source="{Binding ., Image}"/>
-                            <Label Text="{Binding ., Name}"/>
+                            <Label Text="{Binding ., Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>-->
                     </Frame>
+
                 </DataTemplate>
-            </ext:ExtendedCollectionView.SelectedItemTemplate>
+            </control:ExtendedCollectionView.SelectedItemTemplate>
 
+        </control:ExtendedCollectionView>
 
-        </ext:ExtendedCollectionView>
+       
+        <StackLayout Orientation="Horizontal" Margin="8">
+            <Button Text="Add" Command="{Binding AddMonkeyCommand}"/>
+            <Button Text="Remove" Command="{Binding RemoveMonkeyCommand}"/>
+            <Button Text="Refresh" Command="{Binding RefreshCommand}" 
+                    CommandParameter="{Binding Source={x:Reference Ecv}}"/>
+        </StackLayout>
+        
     </StackLayout>
+
 
 </ContentPage>
